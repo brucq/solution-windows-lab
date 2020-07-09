@@ -1,0 +1,8 @@
+---
+- name: Add Active Directory users
+  hosts: windows
+  vars_files:
+    - vars_files/active_directory_users.yml
+
+  roles:
+    - manage_active_directory_users
