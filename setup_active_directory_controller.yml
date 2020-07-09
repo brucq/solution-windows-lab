@@ -2,6 +2,8 @@
 - name: Install and configure Active Directory
   hosts: windows
   gather_facts: false
+  vars_files:
+    - vars_files/active_directory_controller_vars.yml
 
   roles:
 

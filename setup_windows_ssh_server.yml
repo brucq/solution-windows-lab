@@ -1,0 +1,9 @@
+---
+- name: Setup openssh on Windows
+  hosts: windows
+  gather_facts: false
+  vars_files:
+    - vars_files/ssh_service_vars.yml
+
+  roles:
+    - win_service_config
