@@ -1,0 +1,7 @@
+[windows]
+ad1."{{ GUID }}".internal
+
+[all:vars]
+timeout=60
+GUID="{{ lookup('env', 'GUID') }}"
+

@@ -1,0 +1,8 @@
+== Overview
+
+A Solution to the Ansible Advanced Windows Labs
+
+
+NOTE: This solution supports both `winrm` (pywinrm) and `pypsrp`. 
+
+To switch sym link the approrouatre `./group_vars/` file
