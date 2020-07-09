@@ -1,6 +1,36 @@
-# vars file for roles/win_ad_user
-user_info:
-  - { name: 'james', firstname: 'James', surname: 'Jockey', password: 'redhat@123', group_name: 'dev', group_scope: 'domainlocal'}
-  - { name: 'bill', firstname: 'Bill', surname: 'Gates', password: 'redhat@123', group_name: 'dev', group_scope: 'domainlocal'}
-  - { name: 'mickey', firstname: 'Mickey', surname: 'Mouse', password: 'redhat@123', group_name: 'qa', group_scope: 'domainlocal'}
-  - { name: 'donald', firstname: 'Donald', surname: 'Duck', password: 'redhat@123', group_name: 'qa', group_scope: 'domainlocal'}
+---
+
+active_directory_user_state: present
+
+active_directory_users:
+
+  - name:         james
+    firstname:    James 
+    surname:      Jockey 
+    password:     redhat@123 
+    group_name:   dev
+    group_scope:  domainlocal
+
+  - name:         bill 
+    firstname:    Bill 
+    surname:      Gates
+    password:     redhat@123 
+    group_name:   dev
+    group_scope:  domainlocal
+
+  - name:         mickey 
+    firstname:    Mickey 
+    surname:      Mouse
+    password:     redhat@123 
+    group_name:   qa
+    group_scope:  domainlocal
+    state:        present
+
+  - name:         donald 
+    firstname:    Donald 
+    surname:      Duck
+    password:     redhat@123 
+    group_name:   qa
+    group_scope:  domainlocal
+
+...

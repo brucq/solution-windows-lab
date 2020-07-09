@@ -1,19 +1,25 @@
 ---
-# tasks file for roles/win_ad_user
+
 - name: Create windows domain group
   win_domain_group:
-    name: "{{ item.group_name }}"
-    scope: "{{ item.group_scope }}"
-    state: present
-  loop: "{{ user_info }}"
+    name:       "{{ user.group_name }}"
+    scope:      "{{ user.group_scope }}"
+    state:      "{{ user.state | default('present') }}"
+  loop: "{{ active_directory_users }}"
+  loop_control:
+    loop_var: user
 
-- name: Create AD User
+- name: Manage Active Directory users
   win_domain_user:
-    name: "{{ item.name }}"
-    firstname: "{{item.firstname }}"
-    surname: "{{ item.surname }}"
-    password: "{{ item.password }}"
-    groups: "{{ item.group_name }}"
-    state: present
-    email: '"{{ item.name }}"@ad1.704b.example.opentlc.com'
-  loop: "{{ user_info }}"
+    name:       "{{ user.name }}"
+    firstname:  "{{ user.firstname }}"
+    surname:    "{{ user.surname }}"
+    password:   "{{ user.password }}"
+    groups:     "{{ user.group_name }}"
+    state:      "{{ user.state | default(active_directory_user_state) | default('present') }}"
+    email:      "{{ user.name }}@ad1.{{ GUID }}.example.opentlc.com"
+  loop: "{{ active_directory_users }}"
+  loop_control:
+    loop_var: user
+
+...
